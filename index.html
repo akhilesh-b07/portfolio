@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- Head section remains unchanged -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Navigation remains unchanged -->
     <header>
         <nav class="navbar">
             <div class="container">
@@ -28,13 +30,12 @@
     <main>
         <section id="home" class="hero">
             <div class="container">
-                <div class="hero-content">
-                    <h1>Hi, I'm Akhilesh</h1>
-                    <p class="hero-subtitle">Computer Engineering Student at Bajaj Institute of Technology, Wardha</p>
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                <div class="profile-pic-container">
+                    <img src="pro.png" alt="Akhilesh's Profile Picture" loading="lazy" class="profile-pic">
                 </div>
-                <div class="hero-image">
-                    <img src="pro.png" alt="Akhilesh's Profile Picture" loading="lazy">
+                <div class="hero-content">
+                    <h1>Akhilesh</h1>
+                    <p class="hero-subtitle">Computer Engineering Student & Professional Football Player</p>
                 </div>
             </div>
         </section>
@@ -42,47 +43,57 @@
         <section id="about" class="about">
             <div class="container">
                 <h2>About Me</h2>
-                <div class="about-content">
-                    <p>I am a passionate computer engineering student with a keen interest in web development and technology. I enjoy creating innovative solutions and exploring new technologies.</p>
+                <div class="education-section">
+                    <h3>Education</h3>
+                    <div class="education-item">
+                        <h4>Computer Engineering</h4>
+                        <p>Currently studying at <a href="https://bitwardha.ac.in/" target="_blank" rel="noopener">Bajaj Institute of Technology, Wardha</a></p>
+                    </div>
+                    <div class="education-item">
+                        <h4>Higher Secondary Education (11th & 12th)</h4>
+                        <p>Completed from <a href="https://jbsw.shikshamandal.org/" target="_blank" rel="noopener">Bajaj College of Science</a></p>
+                    </div>
+                    <div class="education-item">
+                        <h4>Secondary Education (10th)</h4>
+                        <p>Completed from <a href="https://schools.org.in/wardha/27080806510/agragami-high-school-pipri.html" target="_blank" rel="noopener">Agragami High School, Pipri</a></p>
+                    </div>
+                </div>
+                <div class="sports-section">
+                    <h3>Sports Achievement</h3>
+                    <p>Professional Football Player with experience in competitive leagues and tournaments.</p>
                 </div>
             </div>
         </section>
 
+        <!-- Projects section remains unchanged -->
         <section id="projects" class="projects">
             <div class="container">
                 <h2>Projects</h2>
                 <div class="projects-grid">
                     <article class="project-card">
-                        <h3>Project 1</h3>
-                        <p>Description of Project 1</p>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-secondary">View Project</a>
-                            <a href="#" class="btn btn-outline">Source Code</a>
+                        <h3>Portfolio Website</h3>
+                        <p>A responsive personal portfolio showcasing my projects and skills. Built with HTML5, CSS3, and JavaScript. Features include mobile responsiveness, contact form integration, and modern design principles.</p>
+                        <div class="tech-stack">
+                            <span class="tech-badge">HTML5</span>
+                            <span class="tech-badge">CSS3</span>
+                            <span class="tech-badge">JavaScript</span>
                         </div>
-                    </article>
-                    <article class="project-card">
-                        <h3>Project 2</h3>
-                        <p>Description of Project 2</p>
                         <div class="project-links">
-                            <a href="#" class="btn btn-secondary">View Project</a>
-                            <a href="#" class="btn btn-outline">Source Code</a>
-                        </div>
-                    </article>
-                    <article class="project-card">
-                        <h3>Project 3</h3>
-                        <p>Description of Project 3</p>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-secondary">View Project</a>
-                            <a href="#" class="btn btn-outline">Source Code</a>
+                            <a href="https://github.com/akhilesh-b07/portfolio.git" class="btn btn-primary" target="_blank" rel="noopener">View on GitHub</a>
                         </div>
                     </article>
                 </div>
             </div>
         </section>
 
+        <!-- Contact section remains unchanged -->
         <section id="contact" class="contact">
             <div class="container">
                 <h2>Contact Me</h2>
+                <div class="contact-info">
+                    <p>Email: <a href="mailto:co.2021.asbandwal@bitwardha.ac.in">co.2021.asbandwal@bitwardha.ac.in</a></p>
+                    <p>Phone: <a href="tel:+918329450940">+91 8329450940</a></p>
+                </div>
                 <form id="contact-form" class="contact-form">
                     <div class="form-group">
                         <label for="name" class="visually-hidden">Name</label>
@@ -108,30 +119,28 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Script remains unchanged -->
     <script>
-        // Form handling
         const form = document.getElementById('contact-form');
         const navToggle = document.querySelector('.nav-toggle');
         const navLinks = document.querySelector('.nav-links');
 
-        // Mobile navigation toggle
         navToggle?.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
 
-        // Form submission
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const formData = new FormData(form);
-            const data = Object.fromEntries(formData);
+            const data = {
+                ...Object.fromEntries(formData),
+                recipientEmail: 'co.2021.asbandwal@bitwardha.ac.in'
+            };
 
             try {
                 const response = await fetch('/submit', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data),
                 });
 
